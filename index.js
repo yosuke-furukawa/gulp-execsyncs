@@ -14,6 +14,11 @@ module.exports = function(config) {
     debug(cmd);
     if (cmd) {
       var result = execsyncs(cmd);
+
+      if("function" === typeof config.callback){
+        config.callback(result, cmd);
+      } 
+      
       debug(""+result);
     }
   });
