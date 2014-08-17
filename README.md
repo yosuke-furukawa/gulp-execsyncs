@@ -37,3 +37,32 @@ gulp.task('shell', function() {
 
 gulp.task('default', ['shell']);
 ```
+
+### With callback
+```js
+var gulp        = require('gulp'),
+    execsyncs   = require('gulp-execsyncs')
+
+// Use callback to retrieve command return
+gulp.task('shell-cb', function(){
+  execsyncs({
+    cmd       : 'ls',
+    callback  : function(res){
+      console.log(res);
+    }
+  });
+});
+
+// The second argument of the callback is the original command
+gulp.task('shell-cb', function(){
+  execsyncs({
+    cmds      : [
+      'ls',
+      'cat file.txt'
+    ],
+    callback  : function(res, command){
+      console.log(command, ' : ', res);
+    }
+  });
+});
+```
