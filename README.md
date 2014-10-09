@@ -19,7 +19,7 @@ var gulp = require('gulp'),
 
 gulp.task('shell', function() {
   // execute multiple sync like ls > test/ls.txt && cat test/ls.txt && rm test/ls.txt
-  gexecsyncs({
+  execsyncs({
     cmds : [
       "ls > test/ls.txt",
       "cat test/ls.txt",
@@ -27,12 +27,12 @@ gulp.task('shell', function() {
     ]
   });
   // single task
-  gexecsyncs({
+  execsyncs({
     cmd : "ls > test/ls.txt",
   });
   // more simple task
-  gexecsyncs("cat test/ls.txt");
-  gexecsyncs("rm test/ls.txt");
+  execsyncs("cat test/ls.txt");
+  execsyncs("rm test/ls.txt");
 });
 
 gulp.task('default', ['shell']);
